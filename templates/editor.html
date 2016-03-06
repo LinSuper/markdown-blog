@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="" />
+  <meta name="description" content="">
+  <title>马克分享</title>
+  <link rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/uikit.gradient.css">
+  <script src="http://files-10015041.file.myqcloud.com/static/src/js/jquery.js"></script>
+  <script src="http://files-10015041.file.myqcloud.com/static/src/js/uikit.js"></script>
+  <script src="http://www.getuikit.net/src/js/components/notify.js"></script>
+  <script src="http://www.getuikit.net/src/js/components/pagination.js"></script>
+  <link id="data-uikit-theme" rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/uikit.docs.min.css">
+  <link rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/my_uikit.css">
+  <link rel="stylesheet" href="http://www.getuikit.net/vendor/codemirror/codemirror.css">
+  <script src="http://www.getuikit.net/vendor/codemirror/codemirror.js"></script>
+  <script src="http://www.getuikit.net/vendor/marked.js"></script>
+  <script src="http://www.getuikit.net/src/js/components/htmleditor.js"></script>
+
+</head>
+
+<body class="tm-background">
+  <nav class="tm-navbar uk-navbar uk-navbar-attached">
+            <div class="uk-container uk-container-center">
+
+                <a class="uk-navbar-brand uk-hidden-small" href="../index.html">马克分享</a>
+
+                <ul class="uk-navbar-nav uk-hidden-small">
+                    <li><a href="documentation_get-started.html">开始使用</a></li>
+                    <li class="uk-active"><a href="core.html">核心组件</a></li>
+                    <li><a href="components.html">附加组件</a></li>
+                    <li><a href="customizer.html">定制工具</a></li>
+                    <li><a href="../showcase/index.html">案例展示</a></li>
+                    <li><a href="tutorials.html">视频教程</a></li>
+                </ul>
+
+                <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
+
+                <div class="uk-navbar-brand uk-navbar-center uk-visible-small">马克分享</div>
+
+            </div>
+        </nav>
+  <div class="tm-middle">
+  <div class="uk-container uk-container-center">
+    <div class="uk-form">
+        <label for="">标题：</label>
+        <input type="text" placeholder="" class="uk-width-1-2" id="title">
+
+    </div>
+    </br>
+  <!-- <div class="uk-grid" data-uk-grid-margin> -->
+      <textarea id="my_editor" data-uk-htmleditor="{maxsplitsize:600, markdown:true}" data-uk-check-display="1" style="display: none;"># test</textarea>
+    </br>
+    <a class="uk-button uk-button-large uk-button-primary uk-align-right" href="#">发表</a>
+
+</div>
+</div>
+<!-- </div> -->
+</div>
+<div class="uk-htmleditor-content">
+  <div class="uk-htmleditor-code">
+  </div>
+  <div class="uk-htmleditor-preview" style="height: 500px;"></div>
+
+</div>
+
+    </div>
+  <div class="tm-footer">
+              <div class="uk-container uk-container-center uk-text-center">
+
+                  <ul class="uk-subnav uk-subnav-line uk-flex-center">
+                      <li><a href="http://github.com/uikit/uikit">GitHub</a></li>
+                      <li><a href="http://github.com/uikit/uikit/issues">Issues</a></li>
+                      <li><a href="http://github.com/uikit/uikit/blob/master/CHANGELOG.md">Changelog</a></li>
+                      <li><a href="https://twitter.com/getuikit">Twitter</a></li>
+                  </ul>
+              </div>
+          </div>
+  </body>
+  <script>
+  $(document).ready(function(){
+    // htmleditor = UIkit.htmleditor($(my_editor)[0], {});
+
+  })
+  </script>
+  </html>

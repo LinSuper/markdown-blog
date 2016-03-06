@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touc h-icon-precomposed" href="images/apple-touch-icon.png">
+        <link rel="stylesheet" href="/static/css/uikit.gradient.css" />
+        <script src="/static/jquery-1.11.1.min.js"></script>
+        <script src="/static/js/uikit.js"></script>
+        <script src="/static/md5.js"></script>
+        <script src="/static/js/json2.js"></script>
+    </head>
+<head>
+	<title>PDA个人助手</title>
+</head>
+<body class="uk-height-1-1">
+<br>
+<br>
+<div class="uk-text-center uk-align-center" style="width: 250px;">
+	<div class="uk-panel uk-panel-box uk-form">
+	<h3>PDA个人助手</h3>
+	<fieldset data-uk-margin>
+		<div class="uk-form-row">
+		<input type="text" placeholder="手机号" id="username">
+		</div>
+
+		<div class="uk-form-row">
+		<input type="password" placeholder="密码" id="pwd">
+		</div>
+
+		<div class="uk-form-row">
+		<button class="uk-button" onclick="login()">登录</button>
+		</div>
+	</fieldset>
+	</div>
+	<div class="uk-form-row uk-text-small">
+		<a class="uk-link" href="/api/register">注册</a>&nbsp&nbsp&nbsp
+		<a class="uk-link" href="/forget">忘记密码</a>
+	</div>
+</div>
+</body>
+<script>
+	function login(){
+
+	            username = $("#username").val();
+	            pwd = $("#pwd").val();
+	            if( !username || !pwd ) {
+	                alert("请输入用户名或密码。");
+	                return;
+	            }
+                else{
+                    var data = {
+                        'phone': username,
+                        'password': pwd
+                    };
+                    data = JSON.stringify(data);
+	             $.post("/api/login",
+	             	{
+                        'data': data
+	             	},
+	             	function(data,status){
+                        //alert(data.state);
+	             		if(status=='success'){
+	             			errcode=data;
+	             			if(errcode.state==0){
+	             				alert(errcode.reason);
+	             				return;
+	             			}
+	             			else{
+	             				window.location.href ="/";
+	             			}
+	             		}
+	             		else{
+	             			alert("erro");
+	             		}
+	             		});
+	             	}
+		
+            }
+
+</script>
+</html>
