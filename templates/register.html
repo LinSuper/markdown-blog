@@ -6,12 +6,13 @@
         <title></title>
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="apple-touc h-icon-precomposed" href="images/apple-touch-icon.png">
-        <link rel="stylesheet" href="/static/css/uikit.gradient.css" />
-        <link rel="stylesheet" id="data-uikit-theme" href="http://www.getuikit.net/docs/css/uikit.docs.min.css">
-        <script src="/static/jquery-1.11.1.min.js"></script>
-        <script src="/static/js/uikit.js"></script>
-        <script src="/static/md5.js"></script>
-        <script src="/static/js/json2.js"></script>
+        <link rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/uikit.gradient.css">
+        <script src="http://files-10015041.file.myqcloud.com/static/src/js/jquery.js"></script>
+        <script src="http://files-10015041.file.myqcloud.com/static/src/js/uikit.js"></script>
+        <script src="http://www.getuikit.net/src/js/components/notify.js"></script>
+        <script src="http://www.getuikit.net/src/js/components/pagination.js"></script>
+        <link id="data-uikit-theme" rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/uikit.docs.min.css">
+        <link rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/my_uikit.css">
         <script src="http://www.getuikit.net/src/js/components/notify.js"></script>
     </head>
 <head>
@@ -62,7 +63,7 @@
 			return;
 		}
 
-		$.get("/api/search?phone="+phone,
+		$.get("/index/search?phone="+phone,
 		function(data,status){
 			if(status=='success'){
 				if(data.state==1){
@@ -102,7 +103,7 @@
                 'phone': phone, 'username': username, 'password': pwd1
             };
 
-            $.post('/api/register',
+            $.post('/index/register',
                     {
                         'data': JSON.stringify(data)
                     },
@@ -123,7 +124,7 @@
     }
 
 	function jump(){
-		window.location.href ="/";
+		window.location.href ="/index";
             }
 
 </script>

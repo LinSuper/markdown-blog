@@ -4,13 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="apple-touc h-icon-precomposed" href="images/apple-touch-icon.png">
-        <link rel="stylesheet" href="/static/css/uikit.gradient.css" />
-        <script src="/static/jquery-1.11.1.min.js"></script>
-        <script src="/static/js/uikit.js"></script>
-        <script src="/static/md5.js"></script>
-        <script src="/static/js/json2.js"></script>
+{#        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">#}
+{#        <link rel="apple-touc h-icon-precomposed" href="images/apple-touch-icon.png">#}
+        <link rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/uikit.gradient.css">
+        <script src="http://files-10015041.file.myqcloud.com/static/src/js/jquery.js"></script>
+        <script src="http://files-10015041.file.myqcloud.com/static/src/js/uikit.js"></script>
+        <script src="http://www.getuikit.net/src/js/components/notify.js"></script>
+        <script src="http://www.getuikit.net/src/js/components/pagination.js"></script>
+        <link id="data-uikit-theme" rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/uikit.docs.min.css">
+        <link rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/my_uikit.css">
     </head>
 <head>
 	<title>PDA个人助手</title>
@@ -36,7 +38,7 @@
 	</fieldset>
 	</div>
 	<div class="uk-form-row uk-text-small">
-		<a class="uk-link" href="/api/register">注册</a>&nbsp&nbsp&nbsp
+		<a class="uk-link" href="/index/register">注册</a>&nbsp&nbsp&nbsp
 		<a class="uk-link" href="/forget">忘记密码</a>
 	</div>
 </div>
@@ -56,7 +58,7 @@
                         'password': pwd
                     };
                     data = JSON.stringify(data);
-	             $.post("/api/login",
+	             $.post("/index/login",
 	             	{
                         'data': data
 	             	},
