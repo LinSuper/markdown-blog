@@ -6,3 +6,6 @@ index = Blueprint('/index', __name__)
 
 
 import user
+import editor
+import share
+import blog

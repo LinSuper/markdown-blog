@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from . import index
-from flask import request, jsonify, session, redirect, render_template
+from flask import request, jsonify, redirect, render_template
 from flask.ext.login import (
     login_required,
     login_user,
@@ -14,8 +14,8 @@ import json
 
 @index.route('/')
 def web_index():
-    print current_user.is_authenticated
-    return render_template('index.html')
+    active = current_user.is_authenticated
+    return render_template('index.html', active=active, index=1)
 
 
 @index.route('/register', methods=['POST','GET'])
@@ -62,7 +62,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect('http://ali.superlin.cc:5555/index/login')
+    return redirect('/index/login')
 
 @index.route('/search',methods=['GET'])
 def search_phone():
