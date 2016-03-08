@@ -33,9 +33,9 @@ def load_user(user_id):
 def load_token(token):
     return User(**User.p_col.find_one({User.Field.token: token}))
 
-# from werkzeug.serving import run_with_reloader
-# @run_with_reloader
-# def run_server():
-#     http_server = WSGIServer(('0.0.0.0', 5555), app)
-#     http_server.serve_forever()
-app.run('0.0.0.0',port=5555)
+from werkzeug.serving import run_with_reloader
+@run_with_reloader
+def run_server():
+    http_server = WSGIServer(('0.0.0.0', 5555), app)
+    http_server.serve_forever()
+# app.run('0.0.0.0',port=5555)

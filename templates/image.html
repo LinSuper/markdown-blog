@@ -15,11 +15,11 @@
 
         var cos = new CosCloud("10015041", '/img/sign');
 		var successCallBack = function(result){
-			$("#result").val(result);
+            rr = $.parseJSON(result).data;
 		};
 
 		var errorCallBack = function(result){
-			$("#result").val(result.responseText);
+			alert(result);
 		};
 
 		$("#updateFolder").click(function(){
@@ -67,7 +67,7 @@
 			var selectFunc = function(){
 				 var files = document.getElementById("file").files;
 				 if(files && files.length == 1){
-				 	cos.uploadFile(successCallBack, errorCallBack, bucketName, "/tel.txt", files[0]);
+				 	cos.uploadFile(successCallBack, errorCallBack, bucketName, "txt", files[0]);
 				 }
 				 else{
 				 	alert("请选择一个文件");
