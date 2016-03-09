@@ -10,10 +10,28 @@
           <a class="uk-button uk-button-primary uk-button-large" href="/index/editor">写文章</a>
           {% else %}
           <a class="uk-button uk-button-primary uk-button-large" href="/index/login">登录</a>
-          <a class="uk-button uk-button-large" href="/index/editor">游客</a>
+          <a class="uk-button uk-button-large" href="/index/MarkZone">游客</a>
           {% endif %}
       </p>
     </div>
   </div>
 </div>
+{% endblock %}
+{% block script %}
+    function view_article(content){
+        marked(content, function (err, content) {
+          if (err) throw err;
+          console.log(content);
+        });
+
+        marked.setOptions({
+          highlight: function (code) {
+            return hljs.highlightAuto(code).value;
+          }
+        });
+
+        var view_content = marked(content);
+        return view_content;
+    }
+
 {% endblock %}

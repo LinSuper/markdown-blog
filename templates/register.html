@@ -26,10 +26,10 @@
 	<h3>马克分享</h3>
 	<fieldset data-uk-margin>
 		<div class="uk-form-row">
-		<input type="text" placeholder="手机号" onBlur="searchName()" id="phone">
+		<input type="text" placeholder="邮箱" onBlur="searchName()" id="email">
 		</div>
         <div class="uk-form-row">
-            <input type="text" placeholder="用户名" id="username">
+            <input type="text" placeholder="昵称" id="username">
         </div>
 		<div class="uk-form-row">
 		<input type="password" placeholder="密码" id="pwd1">
@@ -50,25 +50,20 @@
 </body>
 <script>
 	function searchName(){
-		phone=$("#phone").val();
-		if(phone.length!=11){
-			UIkit.notify("请正确输入11位手机号",{timeout:1000});
-			$("#phone").val('');
-			return;
-		}
-		var re=new RegExp(/^[0-9]+$/);
-		if (!re.test(phone)){
-			UIkit.notify("手机号必须为数字",{timeout:1000});
-			$("#phone").val('');
+		email=$("#email").val();
+		var re=new RegExp(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+		if (!re.test(email)){
+			UIkit.notify("邮箱格式错误",{timeout:1000});
+			$("#email").val('');
 			return;
 		}
 
-		$.get("/index/search?phone="+phone,
+		$.get("/index/search?email="+email,
 		function(data,status){
 			if(status=='success'){
 				if(data.state==1){
 					UIkit.notify("用户名已存在",{timeout:1000});
-					$("#phone").val('');
+					$("#email").val('');
 					return;
 				}
 			}
@@ -76,7 +71,7 @@
 		
 	}
 	function register() {
-        phone = $("#phone").val();
+        phone = $("#email").val();
         username = $('#username').val();
         pwd1 = $("#pwd1").val();
         pwd2 = $("#pwd2").val();
@@ -100,7 +95,7 @@
         }
         else {
             var data = {
-                'phone': phone, 'username': username, 'password': pwd1
+                'email': email, 'username': username, 'password': pwd1
             };
 
             $.post('/index/register',

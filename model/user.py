@@ -11,7 +11,7 @@ class User(UserMixin):
         _id = '_id'
         username = 'username'
         password = 'password'
-        phone = 'phone'
+        email = 'email'
         token = 'token'
     def __init__(self, **kwargs):
         UserMixin.__init__(self)

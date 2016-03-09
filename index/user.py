@@ -10,6 +10,7 @@ from flask.ext.login import (
 from model.user import User
 from bson import ObjectId
 import json
+from md5 import md5
 
 
 @index.route('/')
@@ -24,14 +25,15 @@ def register_user():
         return render_template('register.html')
     else:
         data = json.loads(request.form['data'])
-        phone = data['phone']
+        email = data['email']
         password = data['password']
         username = data['username']
-        if User.p_col.find_one({User.Field.phone:phone}):
-            return jsonify(state=0, reason="手机号已被注册！")
+        if User.p_col.find_one({User.Field.email:email}):
+            return jsonify(state=0, reason="邮箱已被注册！")
         else:
             u_id = str(ObjectId())
-            u=dict(_id=u_id,username=username,phone=phone,password=password)
+            pwd = md5(password).hexdigest()
+            u=dict(_id=u_id,username=username,email=email,password=pwd)
             User.p_col.insert(u)
             return jsonify(state=1,reason='')
 
@@ -43,19 +45,16 @@ def login():
 
     else:
         data = json.loads(request.form['data'])
-        phone = data['phone']
+        email = data['email']
         pwd = data['password']
-        u = User.p_col.find_one({User.Field.phone: phone})
+        u = User.p_col.find_one({User.Field.email: email})
         if u == None:
-            return jsonify(state = 0, reason='手机号错误'), 200
-        if pwd != u[User.Field.password]:
+            return jsonify(state = 0, reason='邮箱错误'), 200
+        if md5(pwd).hexdigest() != u[User.Field.password]:
             return jsonify(state = 0, reason='密码错误'), 200
         remember = request.form.get('remember', 0, type=int)
         login_user(User(**u), remember=remember)
-        u_id = current_user['_id']
-        u['detail'] = ''
-        u['timeTables'] = []
-        return jsonify(state=1,user=u)
+        return jsonify(state=1, reason='登录成功！')
 
 
 @index.route('/logout',methods=['GET'])
@@ -66,8 +65,8 @@ def logout():
 
 @index.route('/search',methods=['GET'])
 def search_phone():
-    phone = request.args.get('phone','')
-    u = User.p_col.find_one({User.Field.phone: phone})
+    email = request.args.get('email','')
+    u = User.p_col.find_one({User.Field.email: email})
     if u:
         return jsonify(state=1)
     else:

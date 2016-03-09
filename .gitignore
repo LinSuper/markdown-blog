@@ -1,5 +1,6 @@
 .idea/
 config/__init__.py
+config/.ropeproject/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

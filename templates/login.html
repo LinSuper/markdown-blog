@@ -10,7 +10,6 @@
         <script src="http://files-10015041.file.myqcloud.com/static/src/js/jquery.js"></script>
         <script src="http://files-10015041.file.myqcloud.com/static/src/js/uikit.js"></script>
         <script src="http://www.getuikit.net/src/js/components/notify.js"></script>
-        <script src="http://www.getuikit.net/src/js/components/pagination.js"></script>
         <link id="data-uikit-theme" rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/uikit.docs.min.css">
         <link rel="stylesheet" href="http://files-10015041.file.myqcloud.com/static/src/css/my_uikit.css">
     </head>
@@ -25,7 +24,7 @@
 	<h3>马克分享</h3>
 	<fieldset data-uk-margin>
 		<div class="uk-form-row">
-		<input type="text" placeholder="手机号" id="username">
+		<input type="text" placeholder="邮箱" id="username">
 		</div>
 
 		<div class="uk-form-row">
@@ -54,7 +53,7 @@
 	            }
                 else{
                     var data = {
-                        'phone': username,
+                        'email': username,
                         'password': pwd
                     };
                     data = JSON.stringify(data);
@@ -71,7 +70,7 @@
 	             				return;
 	             			}
 	             			else{
-	             				window.location.href ="/";
+	             				window.location.href ="/index/MarkZone";
 	             			}
 	             		}
 	             		else{
