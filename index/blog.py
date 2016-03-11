@@ -54,6 +54,11 @@ def redirect_my_blog():
         return redirect('/index/login')
 
 
+@index.route('/blog',methods=['GET'])
+def redirect_to_my_blog():
+    return redirect('/index/blog/56e06094196acc6411f99061')
+
+
 @index.route('/blog/<user_id>')
 def show_blog(user_id):
     return render_template('blog.html', index=3, user_id=user_id)
