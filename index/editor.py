@@ -31,14 +31,12 @@ def editor_new():
         content = request.form.get('content', '')
         if len(content) == 0:
             return jsonify(stat=0, message='文章不能为空！')
-        from sys import stderr
-        print>>stderr,content
         article_type = request.form.get('type', 0)
         article_id = str(ObjectId())
-        xss_filter = XssHtml()
-        xss_filter.feed(content)
-        content = xss_filter.getHtml()
-        print>>stderr,content
+        # xss_filter = XssHtml()
+        # xss_filter.feed(content)
+        # content = xss_filter.getHtml()
+        # print>>stderr,content
         if current_user.is_authenticated:
             Article.p_col.insert({
                 '_id': article_id,
@@ -73,9 +71,9 @@ def editor_article(article_id):
         if len(title) <= 1:
             return jsonify(stat=0, message='标题长度太短！')
         content = request.form.get('content', '')
-        xss_filter = XssHtml()
-        xss_filter.feed(content)
-        content = xss_filter.getHtml()
+        # xss_filter = XssHtml()
+        # xss_filter.feed(content)
+        # content = xss_filter.getHtml()
         if len(content) == 0:
             return jsonify(stat=0, message='文章不能为空！')
         article_type = request.form.get('type', 0)

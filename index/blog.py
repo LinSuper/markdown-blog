@@ -7,6 +7,8 @@ from model.user import User
 from bson import ObjectId
 from datetime import datetime
 from lib.timehelper import utc2local, datetime2string
+from markdown import markdown
+from lib.xss_filtter import XssHtml
 
 
 @index.route('/article/<article_id>', methods=['GET'])
@@ -29,9 +31,12 @@ def article(article_id):
     else:
         auth = False
         user_name = User.p_col.find_one(current_user_id).get('username', '')
+    content = markdown(content)
+    xss_filter = XssHtml()
+    xss_filter.feed(content)
     return render_template(
         'article.html',
-            content=content,
+            content=xss_filter.getHtml(),
             title=title,
             create_time=create_time,
             author=author,
