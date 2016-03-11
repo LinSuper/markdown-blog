@@ -31,12 +31,12 @@ def article(article_id):
     else:
         auth = False
         user_name = User.p_col.find_one(current_user_id).get('username', '')
-    content = markdown(content)
-    xss_filter = XssHtml()
-    xss_filter.feed(content)
+    # content = markdown(content)
+    # xss_filter = XssHtml()
+    # xss_filter.feed(content)
     return render_template(
         'article.html',
-            content=xss_filter.getHtml(),
+            content=content,
             title=title,
             create_time=create_time,
             author=author,
