@@ -11,6 +11,7 @@ from model.user import User
 from bson import ObjectId
 import json
 from md5 import md5
+from lib.xss_filtter import XssHtml
 
 
 @index.route('/')
@@ -28,6 +29,9 @@ def register_user():
         email = data['email']
         password = data['password']
         username = data['username']
+        xss_filter = XssHtml()
+        xss_filter.feed(username)
+        username = xss_filter.getHtml()
         if User.p_col.find_one({User.Field.email:email}):
             return jsonify(state=0, reason="邮箱已被注册！")
         else:

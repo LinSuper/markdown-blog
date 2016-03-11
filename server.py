@@ -11,7 +11,7 @@ app.debug = True
 app.secret_key = 'dsafdggfivfngnkrhsgsas'
 app.register_blueprint(index, url_prefix='/index')
 app.register_blueprint(img, url_prefix='/img')
-from user import *
+
 
 @app.route('/')
 #@login_required
@@ -21,7 +21,7 @@ def hello_world():
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'http://ali.superlin.cc:5555/api/login'
+login_manager.login_view = '/index/login'
 
 
 @login_manager.user_loader
